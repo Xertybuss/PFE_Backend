@@ -1,10 +1,10 @@
 package com.example.demo.dtos.writeUpdateDtos;
 
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter @Setter
 public class PermissionWriteDto {
-    private String code_permission;
+    private String codePermission;
     private String label;
-    private int profile_id;
+    private int profileId;
 }

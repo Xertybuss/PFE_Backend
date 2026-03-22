@@ -11,14 +11,14 @@ import lombok.Data;
 public class Usage{
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private Date date_start_affectation;
-    private Date date_end_affectation;
-    private Time start_hour_morning;
-    private Time end_hour_morning;
-    private Time start_hour_evening;
-    private Time end_hour_evening;
-    @ManyToOne
+    private Date dateStartAffectation;
+    private Date dateEndAffectation;
+    private Time startHourMorning;
+    private Time endHourMorning;
+    private Time startHourEvening;
+    private Time endHourEvening;
+    @ManyToOne(fetch = FetchType.LAZY)
     private Collaborater collaborater;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Vehicle vehicle;
 }

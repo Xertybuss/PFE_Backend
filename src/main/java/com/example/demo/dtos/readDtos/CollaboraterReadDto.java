@@ -10,6 +10,6 @@ public record CollaboraterReadDto(
     String homeLocation,
     String address,
     String collabType,
-    int company_id,
+    CompanyReadDto company,
     List<UsageReadDto> usages
 ) {}

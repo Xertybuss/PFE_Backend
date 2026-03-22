@@ -4,12 +4,12 @@ import java.util.List;
 
 public record AccountUserReadDto(
     int id,
-    String first_name,
-    String last_name,
+    String firstName,
+    String lastName,
     String username,
-    String phone_number,
+    String phoneNumber,
     boolean activated,
     CompanyReadDto company,
-    ProfileReadDto profile_id,
+    ProfileReadDto profile,
     List<VehicleReadDto> vehicles
 ) {}

@@ -1,14 +1,14 @@
 package com.example.demo.dtos.writeUpdateDtos;
 
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter @Setter
 public class CollaboraterWriteDto {
-    private String first_name;
-    private String last_name;
-    private String phone_number;
-    private String home_location;
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
+    private String homeLocation;
     private String address;
-    private String collab_type;
-    private int company_id;
+    private String collabType;
+    private int companyId;
 }

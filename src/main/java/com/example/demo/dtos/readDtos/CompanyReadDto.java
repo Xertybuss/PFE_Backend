@@ -4,10 +4,10 @@ import java.util.List;
 
 public record CompanyReadDto(
     int id,
-    String code_company,
+    String codeCompany,
     String label,
     String address,
-    String phone_number,
+    String phoneNumber,
     List<VehicleReadDto> vehicles,
     List<AccountUserReadDto> accounts,
     List<CollaboraterReadDto> collaboraters

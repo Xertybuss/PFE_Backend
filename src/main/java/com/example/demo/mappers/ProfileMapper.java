@@ -16,8 +16,12 @@ public class ProfileMapper {
 
     public static ProfileReadDto toDto(Profile profile){
         if(profile == null) return null;
-        ProfileReadDto profileReadDto = new ProfileReadDto();
-        BeanUtils.copyProperties(profile, profileReadDto);
-        return profileReadDto;
+        return new ProfileReadDto(
+            profile.getId(),
+            profile.getCodeProfile(),
+            profile.getLabel(),
+            AccountUserMapper.toDtoList(profile.getAccounts()),
+            PermissionMapper.toDtoList(profile.getPermissions())
+        );
     }
 }

@@ -5,10 +5,13 @@ import java.util.List;
 import com.example.demo.enums.TypeVehicle;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 @Entity
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Vehicle extends Dates{
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -19,15 +22,15 @@ public class Vehicle extends Dates{
     @Column(nullable = true, length = 100)
     private String label;
     @Enumerated(value = EnumType.STRING)
-    private TypeVehicle vehicle_type;
+    private TypeVehicle vehicleType;
     @Column(nullable = false)
-    private int capacity_places;
+    private int capacityPlaces;
     @Column(nullable = false, scale = 2)
-    private double capacity_weight;
-    @ManyToOne
+    private double capacityWeight;
+    @ManyToOne(fetch = FetchType.LAZY)
     private Company company;
-    @ManyToOne
-    private AccountUser account_user;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private AccountUser accountUser;
     @OneToMany(mappedBy = "vehicle")
     private List<Usage> usages;
 }

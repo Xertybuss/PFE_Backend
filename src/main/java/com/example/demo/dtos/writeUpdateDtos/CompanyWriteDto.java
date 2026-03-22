@@ -1,11 +1,11 @@
 package com.example.demo.dtos.writeUpdateDtos;
 
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter @Setter
 public class CompanyWriteDto {
-    private String code_company;
+    private String codeCompany;
     private String label;
     private String address;
-    private String phone_number;
+    private String phoneNumber;
 }

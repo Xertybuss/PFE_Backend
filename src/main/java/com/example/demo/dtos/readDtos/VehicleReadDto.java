@@ -7,10 +7,10 @@ public record VehicleReadDto(
     String imei,
     String immatriculation,
     String label,
-    String vehicle_type,
-    int capacity_places,
-    double capacity_weight,
-    double company_id,
-    int account_user_id,
+    String vehicleType,
+    int capacityPlaces,
+    double capacityWeight,
+    CompanyReadDto company,
+    AccountUserReadDto accountUser,
     List<UsageReadDto> usages
 ) {}

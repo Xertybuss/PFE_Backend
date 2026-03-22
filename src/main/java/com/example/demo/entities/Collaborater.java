@@ -5,26 +5,30 @@ import java.util.List;
 import com.example.demo.enums.TypeCollab;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 @Entity
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Collaborater extends Dates{
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     @Column(nullable = false, length = 50)
-    private String first_name;
+    private String firstName;
     @Column(nullable = false, length = 50)
-    private String last_name;
+    private String lastName;
     @Column(nullable = false, length = 20)
-    private String phone_number;
+    private String phoneNumber;
     @Column(nullable = false, length = 150)
-    private String home_location;
+    private String homeLocation;
     @Column(nullable = false, length = 200)
     private String address;
     @Enumerated(value = EnumType.STRING)
-    private TypeCollab collab_type;
-    @ManyToOne
+    private TypeCollab collabType;
+    @ManyToOne(fetch = FetchType.LAZY)
     private Company company;
     @OneToMany(mappedBy = "collaborater")
     private List<Usage> usages;

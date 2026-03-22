@@ -1,14 +1,14 @@
 package com.example.demo.dtos.writeUpdateDtos;
 
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter @Setter
 public class VehicleWriteDto {
     private String imei;
     private String immatriculation;
     private String label;
-    private String vehicle_type;
-    private int capacity_places;
-    private double capacity_weight;
+    private String vehicleType;
+    private int capacityPlaces;
+    private double capacityWeight;
     private int company_id;
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 public record ProfileReadDto(
     int id,
-    String code_profile,
+    String codeProfile,
     String label,
     List<AccountUserReadDto> accounts,
     List<PermissionReadDto> permissions

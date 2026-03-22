@@ -23,20 +23,18 @@ public class UsageMapper {
         if(usage == null) return null;
         return new UsageReadDto(
             usage.getId(),
-            usage.getDate_start_affectation(),
-            usage.getDate_end_affectation(),
-            usage.getStart_hour_morning(),
-            usage.getEnd_hour_morning(),
-            usage.getStart_hour_evening(),
-            usage.getEnd_hour_evening(),
-            usage.getCollaborater().getId(),
-            usage.getVehicle().getId()
+            usage.getDateStartAffectation(),
+            usage.getDateEndAffectation(),
+            usage.getStartHourMorning(),
+            usage.getEndHourMorning(),
+            usage.getStartHourEvening(),
+            usage.getEndHourEvening(),
+            CollaboraterMapper.toDto(usage.getCollaborater()),
+            VehicleMapper.toDto(usage.getVehicle())
         );
     }
 
     public static List<UsageReadDto> toDtoList(List<Usage> usages){
-        return usages.stream()
-            .map(UsageMapper::toDto)
-            .collect(Collectors.toList());
+        return usages.stream().map(UsageMapper::toDto).collect(Collectors.toList());
     }
 }

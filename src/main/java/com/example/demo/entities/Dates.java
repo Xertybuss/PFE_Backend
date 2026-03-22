@@ -2,11 +2,13 @@ package com.example.demo.entities;
 
 import java.sql.Date;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data @NoArgsConstructor
+@Getter 
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public abstract class Dates {
-    private Date date_creation;
-    private Date date_update;
+    private Date dateCreation;
+    private Date dateUpdate;
 }
