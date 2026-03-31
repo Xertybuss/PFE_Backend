@@ -6,4 +6,6 @@ import com.example.demo.entities.Permission;
 
 public interface PermissionRepository extends JpaRepository<Permission, Integer>{
 
+    Permission findPermissionById(Integer id);
+
 }

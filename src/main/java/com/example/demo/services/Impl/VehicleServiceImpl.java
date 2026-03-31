@@ -36,9 +36,9 @@ public class VehicleServiceImpl implements VehicleService{
     
     @Override
     public Vehicle updateVehicle(Vehicle vehicle) {
-        Vehicle vehicle2 = vehicleRepository.findVehicleById(vehicle.getId());
-        BeanUtils.copyProperties(vehicle, vehicle2, "id");  
-        return vehicleRepository.save(vehicle2);
+        Vehicle existingVehicle = vehicleRepository.findVehicleById(vehicle.getId());
+        BeanUtils.copyProperties(vehicle, existingVehicle, "id");  
+        return vehicleRepository.save(existingVehicle);
     }
 
     @Override

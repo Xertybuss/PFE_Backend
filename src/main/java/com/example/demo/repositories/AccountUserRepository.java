@@ -6,4 +6,6 @@ import com.example.demo.entities.AccountUser;
 
 public interface AccountUserRepository extends JpaRepository<AccountUser, Integer>{
 
+    AccountUser findAccountUserById(Integer id);
+
 }

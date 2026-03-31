@@ -6,4 +6,6 @@ import com.example.demo.entities.Usage;
 
 public interface UsageRepository extends JpaRepository<Usage, Integer>{
 
+    Usage findUsageById(Integer id);
+
 }

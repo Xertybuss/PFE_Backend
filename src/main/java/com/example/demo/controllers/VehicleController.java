@@ -1,10 +1,9 @@
 package com.example.demo.controllers;
 
-
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,10 +24,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 @RestController
 @RequestMapping("/vehicles")
 public class VehicleController {
-    @Autowired
     private VehicleService vehicleService;
 
+    public VehicleController(VehicleService vehicleService){
+        this.vehicleService = vehicleService;
+    }
+
     @GetMapping("/all")
+    @PreAuthorize("hasRole('LOGISTICS')")
     public List<VehicleReadDto> getAllVehicles() {
         try {
             return VehicleMapper.toDtoList(vehicleService.getAllVehicles());
@@ -38,21 +41,25 @@ public class VehicleController {
         }
     }
     
+    @PreAuthorize("hasRole('LOGISTICS')")
     @GetMapping("/get/{id}")
     public VehicleReadDto getVehicleById(@PathVariable Integer id) {
         return VehicleMapper.toDto(vehicleService.getVehicleById(id));
     }
 
+    @PreAuthorize("hasRole('LOGISTICS')")
     @PostMapping("/create")
     public ResponseEntity<VehicleReadDto> postMethodName(@RequestBody VehicleWriteDto entity) {
         return ResponseEntity.ok(VehicleMapper.toDto(vehicleService.createVehicle(VehicleMapper.toEntity(entity))));
     }
 
-    @PutMapping("/update/{id}")
-    public VehicleReadDto updateVehicle(@PathVariable Integer id, @RequestBody VehicleWriteDto entity) {       
+    @PreAuthorize("hasRole('LOGISTICS')")
+    @PutMapping("/update")
+    public VehicleReadDto updateVehicle(@RequestBody VehicleWriteDto entity) {       
         return VehicleMapper.toDto(vehicleService.updateVehicle(VehicleMapper.toEntity(entity)));
     }
 
+    @PreAuthorize("hasRole('LOGISTICS')")
     @DeleteMapping("/delete/{id}")
     public void deleteVehicle(@PathVariable Integer id) {
         vehicleService.deleteVehicle(id);

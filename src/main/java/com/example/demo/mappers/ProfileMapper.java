@@ -1,5 +1,7 @@
 package com.example.demo.mappers;
 
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 
 import com.example.demo.dtos.readDtos.ProfileReadDto;
@@ -23,5 +25,10 @@ public class ProfileMapper {
             AccountUserMapper.toDtoList(profile.getAccounts()),
             PermissionMapper.toDtoList(profile.getPermissions())
         );
+    }
+
+    public static List<ProfileReadDto> toDtoList(List<Profile> profiles){
+        if(profiles == null) return null;
+        return profiles.stream().map(ProfileMapper::toDto).toList();
     }
 }

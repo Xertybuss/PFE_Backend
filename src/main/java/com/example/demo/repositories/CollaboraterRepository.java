@@ -6,4 +6,6 @@ import com.example.demo.entities.Collaborater;
 
 public interface CollaboraterRepository extends JpaRepository<Collaborater, Integer>{
 
+    Collaborater findCollaboraterById(Integer id);
+
 }
