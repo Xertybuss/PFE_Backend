@@ -31,7 +31,7 @@ public class VehicleController {
     }
 
     @GetMapping("/all")
-    @PreAuthorize("hasRole('LOGISTICS')")
+    @PreAuthorize("hasAnyAuthority('LOGISTICS')")
     public List<VehicleReadDto> getAllVehicles() {
         try {
             return VehicleMapper.toDtoList(vehicleService.getAllVehicles());
@@ -41,25 +41,25 @@ public class VehicleController {
         }
     }
     
-    @PreAuthorize("hasRole('LOGISTICS')")
+    @PreAuthorize("hasAnyAuthority('LOGISTICS')")
     @GetMapping("/get/{id}")
     public VehicleReadDto getVehicleById(@PathVariable Integer id) {
         return VehicleMapper.toDto(vehicleService.getVehicleById(id));
     }
 
-    @PreAuthorize("hasRole('LOGISTICS')")
+    @PreAuthorize("hasAnyAuthority('LOGISTICS')")
     @PostMapping("/create")
     public ResponseEntity<VehicleReadDto> postMethodName(@RequestBody VehicleWriteDto entity) {
         return ResponseEntity.ok(VehicleMapper.toDto(vehicleService.createVehicle(VehicleMapper.toEntity(entity))));
     }
 
-    @PreAuthorize("hasRole('LOGISTICS')")
+    @PreAuthorize("hasAnyAuthority('LOGISTICS')")
     @PutMapping("/update")
     public VehicleReadDto updateVehicle(@RequestBody VehicleWriteDto entity) {       
         return VehicleMapper.toDto(vehicleService.updateVehicle(VehicleMapper.toEntity(entity)));
     }
 
-    @PreAuthorize("hasRole('LOGISTICS')")
+    @PreAuthorize("hasAnyAuthority('LOGISTICS')")
     @DeleteMapping("/delete/{id}")
     public void deleteVehicle(@PathVariable Integer id) {
         vehicleService.deleteVehicle(id);

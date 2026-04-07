@@ -21,7 +21,7 @@ public class CollaboraterController {
         this.collaboraterService = collaboraterService;
     }
 
-    @PreAuthorize("hasRole('LOGISTICS')")
+    @PreAuthorize("hasAnyAuthority('LOGISTICS')")
     @GetMapping("/all")
     public List<CollaboraterReadDto> getAllCollaboraters() {
         try {
@@ -32,25 +32,25 @@ public class CollaboraterController {
         }
     }
     
-    @PreAuthorize("hasRole('LOGISTICS')")
+    @PreAuthorize("hasAnyAuthority('LOGISTICS')")
     @GetMapping("/get/{id}")
     public CollaboraterReadDto getCollaboraterById(@PathVariable Integer id) {
         return CollaboraterMapper.toDto(collaboraterService.getCollaboraterById(id));
     }
 
-    @PreAuthorize("hasRole('LOGISTICS')")
+    @PreAuthorize("hasAnyAuthority('LOGISTICS')")
     @PostMapping("/create")
     public ResponseEntity<CollaboraterReadDto> postMethodName(@RequestBody CollaboraterWriteDto entity) {
         return ResponseEntity.ok(CollaboraterMapper.toDto(collaboraterService.createCollaborater(CollaboraterMapper.toEntity(entity))));
     }
 
-    @PreAuthorize("hasRole('LOGISTICS')")
+    @PreAuthorize("hasAnyAuthority('LOGISTICS')")
     @PutMapping("/update")
     public CollaboraterReadDto updateCollaborater(@RequestBody CollaboraterWriteDto entity) {       
         return CollaboraterMapper.toDto(collaboraterService.updateCollaborater(CollaboraterMapper.toEntity(entity)));
     }
 
-    @PreAuthorize("hasRole('LOGISTICS')")
+    @PreAuthorize("hasAnyAuthority('LOGISTICS')")
     @DeleteMapping("/delete/{id}")
     public void deleteCollaborater(@PathVariable Integer id) {
         collaboraterService.deleteCollaborater(id);

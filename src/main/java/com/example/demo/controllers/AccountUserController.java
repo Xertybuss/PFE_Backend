@@ -20,30 +20,30 @@ public class AccountUserController {
     }
 
     @GetMapping("/all")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public List<AccountUserReadDto> getAllAccountUsers() {
         return AccountUserMapper.toDtoList(accountUserService.getAccountUsers());
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @GetMapping("/get/{id}")
     public AccountUserReadDto getAccountUserById(@PathVariable Integer id) {
         return AccountUserMapper.toReadDto(accountUserService.getAccountUserById(id));
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @PostMapping("/create")
     public AccountUserReadDto createAccountUser(@RequestBody AccountUserWriteDto entity) {
         return AccountUserMapper.toReadDto(accountUserService.createAccountUser(AccountUserMapper.toEntity(entity)));
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @PostMapping("/update")
     public AccountUserReadDto updateAccountUser(@RequestBody AccountUserWriteDto entity) {
         return AccountUserMapper.toReadDto(accountUserService.updateAccountUser(AccountUserMapper.toEntity(entity)));   
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void deleteAccountUser(@PathVariable Integer id){
         accountUserService.deleteAccountUser(id);

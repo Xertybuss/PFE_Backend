@@ -19,31 +19,31 @@ public class CompanyController {
         this.companyService = companyService;
     }
 
-    @PreAuthorize("hasRole('LOGISTICS')")
+    @PreAuthorize("hasAnyAuthority('LOGISTICS')")
     @GetMapping("/all")
     public List<CompanyReadDto> getAllCompanies() {
         return CompanyMapper.toDtoList(companyService.getAllCompanies());
     }
 
-    @PreAuthorize("hasRole('LOGISTICS')")
+    @PreAuthorize("hasAnyAuthority('LOGISTICS')")
     @GetMapping("/company/{id}")
     public CompanyReadDto getCompanyById(@PathVariable Integer id) {
         return CompanyMapper.toDto(companyService.getCompanyById(id));
     }
 
-    @PreAuthorize("hasRole('LOGISTICS')")
+    @PreAuthorize("hasAnyAuthority('LOGISTICS')")
     @PostMapping("/create")
     public CompanyReadDto createCompany(@RequestBody CompanyWriteDto entity) {
         return CompanyMapper.toDto(companyService.createCompany(CompanyMapper.toEntity(entity)));
     }
     
-    @PreAuthorize("hasRole('LOGISTICS')")
+    @PreAuthorize("hasAnyAuthority('LOGISTICS')")
     @PutMapping("/update")
     public CompanyReadDto updateCompany(@RequestBody CompanyWriteDto entity) {
         return CompanyMapper.toDto(companyService.updateCompany(CompanyMapper.toEntity(entity)));
     }
 
-    @PreAuthorize("hasRole('LOGISTICS')")
+    @PreAuthorize("hasAnyAuthority('LOGISTICS')")
     @DeleteMapping("/delete/{id}")
     public void deleteCompany(@PathVariable Integer id){
         companyService.deleteCompany(id);

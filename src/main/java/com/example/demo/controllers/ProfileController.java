@@ -19,31 +19,31 @@ public class ProfileController {
         this.profileService = profileService;
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @GetMapping("/all")
     public List<ProfileReadDto> getAllProfiles() {
         return ProfileMapper.toDtoList(profileService.getAllProfiles());
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @GetMapping("/get/{id}")
     public ProfileReadDto getProfileById(@PathVariable Integer id) {
         return ProfileMapper.toDto(profileService.getProfileById(id));
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @PostMapping("/create")
     public ProfileReadDto createProfile(@RequestBody ProfileWriteDto entity) {
         return ProfileMapper.toDto(profileService.createProfile(ProfileMapper.toEntity(entity)));
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @PutMapping("/update")
     public ProfileReadDto updateProfile(@RequestBody ProfileWriteDto entity) {
         return ProfileMapper.toDto(profileService.updateProfile(ProfileMapper.toEntity(entity)));
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void deleteProfile(@PathVariable Integer id){
         profileService.deleteProfile(id);
